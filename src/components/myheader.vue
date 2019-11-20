@@ -1,0 +1,41 @@
+<template>
+    <div class="header" style="padding: 0 20px;background-color: #545c64;display: flex;align-items: center;justify-content: space-between">
+        <div style="color: #fff">LOGO</div>
+        <el-menu
+                class="el-menu-demo"
+                mode="horizontal"
+                background-color="#545c64"
+                text-color="#fff"
+                active-text-color="#ffd04b">
+            <el-menu-item index="1">处理中心</el-menu-item>
+            <el-submenu index="2">
+                <template slot="title">{{nickname}}</template>
+                <el-menu-item index="2-1">修改密码</el-menu-item>
+                <el-menu-item index="2-2" @click="loginOut">退出</el-menu-item>
+            </el-submenu>
+        </el-menu>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "myheader",
+        data(){
+            return{
+                nickname:sessionStorage.getItem(this.$config.CACHE_KEY.LOGIN_USER_NAME),
+            }
+        },
+        methods:{
+            loginOut(){
+                this.$go('/login');
+                sessionStorage.clear();
+            }
+        }
+    }
+</script>
+
+<style >
+.header{
+    height: 60px;
+}
+</style>
