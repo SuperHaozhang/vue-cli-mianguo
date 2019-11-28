@@ -20,14 +20,16 @@
                         <el-input prefix-icon="el-icon-unlock" type="password" v-model.trim="form.pwd"  placeholder="密码" @keyup.enter.native="onSubmit"></el-input>
                     </el-form-item>
                     <el-form-item >
-                        <el-button style="width: 100%" type="primary" @click="onSubmit" >登录</el-button>
+                        <el-button style="width: 100%"
+                                   type="primary"
+                                   @click="onSubmit"
+                                   id="TencentCaptcha">登录</el-button>
                     </el-form-item>
                 </el-form>
             </el-card>
         </div>
     </div>
 </template>
-
 <script>
     export default {
         name: "login",
@@ -57,17 +59,36 @@
             onSubmit(){
                 this.loginLoding = true;
                 if(!this.form.name || !this.form.pwd){
-                    return this.$warn('用户名和密码不能为空')
+                    this.loginLoding = false;
+                    return this.$warn('用户名和密码不能为空');
                 }
+                var _this = this;
+                var captcha1 = new TencentCaptcha('2005857848', function(res) {
+                    if(res.ret == 0){
+                        _this.login()
+                    }else {
+                        return;
+                    }
+                });
+                captcha1.show();
+
+            },
+            rest() {
+                this.styleobj={
+                    'display': 'none',
+                }
+            },
+            login(){
                 this.$http({
                     method: 'post',
-                    url: '/login',
+                    url: '/adminlogin',
                     data: this.$qs.stringify(this.form)
                 }).then(res=>{
                     console.log(res.data.code);
-                    if(res.data.code==1){
+                    console.log(res.data.message);
+                    if(res.data.code==200){
                         this.mess = 'success';
-                        this.title = res.data.message;
+                        this.title = "登录成功";
                         this.loginLoding = false;
                         this.styleobj={
                             'height': '30px',
@@ -75,12 +96,12 @@
                             'margin-left': '150px',
                         };
                         sessionStorage.setItem('name',res.data.name);
+                        this.$store.commit("LOGIN", res.data.message);
                         setTimeout(()=>{
                             this.$go('/');
                         },1000);
-
                     }
-                    if(res.data.code==0){
+                    if(res.data.code!==200){
                         this.loginLoding = false;
                         this.mess = 'error';
                         this.title = res.data.message;
@@ -99,16 +120,10 @@
                     this.loginLoding = false;
                     console.log(reason)
                 })
-            },
-            rest() {
-                this.styleobj={
-                    'display': 'none',
-                }
             }
         }
     }
 </script>
-
 <style lang="scss">
     $w:100vw;
     $h:100vh;

@@ -22,7 +22,7 @@ const routes = [
             {
                 path: '/',
                 name: 'about',
-                component: () => import('../views/home.vue'), //异步加载组件，需要时点开再加载该组件
+                component: () => import('../views/home1.vue'), //异步加载组件，需要时点开再加载该组件
                 meta:{
                     title: '详情页',
                     index : '1',
@@ -30,26 +30,46 @@ const routes = [
                 }
             },
             {
-                path: '/userlist',
-                name: 'userlist',
+                path: '/index',
+                name: 'index',
                 component: () => import('../views/user/userList/userlist.vue'), //异步加载组件，需要时点开再加载该组件
                 meta: {
-                    title: '用户列表',
-                    parentName:'用户管理',
+                    title: '首页图片',
+                    parentName:'首页管理',
                     index: '2-1',
                 }
 
             },
-            {
+/*            {
                 path: '/com',
                 name: 'com',
                 component: () => import('../views/user/comlist/com.vue'), //异步加载组件，需要时点开再加载该组件
                 meta: {
-                    title: '公司列表',
-                    parentName:'用户管理',
+                    title: '首页案例',
+                    parentName:'首页管理',
                     index: '2-2',
                 }
 
+            },*/
+            {
+                path: '/case',
+                name: 'case',
+                component: () => import('../views/user/case/case.vue'), //异步加载组件，需要时点开再加载该组件
+                meta: {
+                    title: '首页案例',
+                    parentName:'首页管理',
+                    index: '2-2',
+                }
+            },
+            {
+                path: '/member',
+                name: 'member',
+                component: () => import('../views/user/member/member.vue'), //异步加载组件，需要时点开再加载该组件
+                meta: {
+                    title: '首页会员',
+                    parentName:'首页管理',
+                    index: '2-3',
+                }
             },
             {
                 path: '/article',
@@ -69,6 +89,16 @@ const routes = [
                     title: '添加文章',
                     parentName:'内容管理',
                     index: '3-2',
+                }
+            },
+            {
+                path: '/active',
+                name: 'active',
+                component: () => import('../views/user/active/active.vue'), //异步加载组件，需要时点开再加载该组件
+                meta: {
+                    title: '线下活动',
+                    parentName:'内容管理',
+                    index: '3-3',
                 }
             },
             {
@@ -95,7 +125,7 @@ const  route = new VueRouter({
 
 route.beforeEach((to, from, next)=>{
     console.log(to.path);
-    document.title = to.meta.title+'- XX';
+    document.title = to.meta.title+'- 昆山情缘';
     //判断当前路由是否需要登录
     if(!to.meta.anonymous){
         //做登录验证

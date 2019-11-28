@@ -11,18 +11,19 @@
                    class="el-menu-vertical-demo"
                    router
                    :collapse="isCollapse" >
-               <el-menu-item index="1" route="/">
+<!--               <el-menu-item index="1" route="/">
                    <i class="el-icon-s-home"></i>
                    <span slot="title">工作平台</span>
-               </el-menu-item>
+               </el-menu-item>-->
                <el-submenu index="2">
                    <template slot="title">
                        <i class="el-icon-location"></i>
-                       <span slot="title">用户管理</span>
+                       <span slot="title">首页管理</span>
                    </template>
                    <el-menu-item-group >
-                       <el-menu-item index="2-1" route="/userlist" id="item">用户列表</el-menu-item>
-                       <el-menu-item index="2-2" route="/com" id="item1">公司列表</el-menu-item>
+                       <el-menu-item index="2-1" route="/index" id="item">首页图片</el-menu-item>
+                       <el-menu-item index="2-2" route="/case" id="item1">案例图片</el-menu-item>
+                       <el-menu-item index="2-3" route="/member" id="item4">会员图片</el-menu-item>
                    </el-menu-item-group>
                </el-submenu>
                <el-submenu index="3">
@@ -31,8 +32,9 @@
                        <span slot="title">内容管理</span>
                    </template>
                    <el-menu-item-group >
-                       <el-menu-item index="3-1" route="/article" id="item2">文章列表</el-menu-item>
-                       <el-menu-item index="3-2" route="/com" id="item13">公司列表</el-menu-item>
+                       <!--<el-menu-item index="3-3" route="/active" id="item5">动态管理</el-menu-item>-->
+                       <el-menu-item index="3-1" route="/article" id="item2">动态管理</el-menu-item>
+                       <el-menu-item index="3-2" route="/active" id="item13">线下活动</el-menu-item>
                    </el-menu-item-group>
                </el-submenu>
 

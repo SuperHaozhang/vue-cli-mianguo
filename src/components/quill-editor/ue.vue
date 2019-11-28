@@ -16,7 +16,7 @@
                             @blur="onEditorBlur($event)"
                             @focus="onEditorFocus($event)"
                             @change="onEditorChange($event)"
-                            style="height: 300px"
+                            style="height: 500px"
                             ref="QuillEditor">
             <!-- 自定义toolar -->
         </quill-editor>
@@ -121,7 +121,7 @@
                     // 获取光标所在位置
                     let length = quill.getSelection().index;
                     // 插入图片，res为服务器返回的图片链接地址
-                    quill.insertEmbed(length, 'image', this.$config.STATIC_URL+res);
+                    quill.insertEmbed(length, 'image', this.$config.STATIC_URL+res.url);
                     // 调整光标到最后
                     quill.setSelection(length + 1)
                 } else {

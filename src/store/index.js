@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-      nickname:'测试VUEX'
+      nickname:'测试VUEX',
+      token: window.sessionStorage.getItem('token'),  //存到localStorage中一样
   },
   getters:{
       //对state中的数据进行过滤
@@ -17,7 +18,13 @@ export default new Vuex.Store({
   mutations: {
       setnickName(state,val){
           state.nickname = val
-      }
+      },
+      LOGIN: (state, data) => {
+          //更改token的值
+          state.token = data;
+          // console.log(data)
+          window.sessionStorage.setItem('token', data);
+      },
   },
   actions: {
 
