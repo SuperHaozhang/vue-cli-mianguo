@@ -1,12 +1,10 @@
 <template>
-    <h1>
-        页面走丢了，请返回登录！！！
-    </h1>
+    <div>主体信息</div>
 </template>
 
 <script>
     export default {
-        name: "404"
+        name: "ztxx"
     }
 </script>
 

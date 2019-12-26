@@ -140,6 +140,7 @@
                                     {{detailUser.address}}
                                 </el-form-item>-->
                 <el-form-item label="线下活动图 :" prop="avatar" :label-width="formLabelWidth">
+                <!--点击放大-->
                     <viewer :images="imageList">
                         <img v-if="detailUser.img_src" :src="$config.STATIC_URL+detailUser.img_src"
                              class="avatar"

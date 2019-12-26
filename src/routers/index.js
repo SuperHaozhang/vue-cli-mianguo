@@ -20,98 +20,187 @@ const routes = [
         component: () => import('../views/main.vue'), //异步加载组件，需要时点开再加载该组件,
         children:[
             {
-                path: '/',
+                path: '/about',
                 name: 'about',
                 component: () => import('../views/home1.vue'), //异步加载组件，需要时点开再加载该组件
                 meta:{
-                    title: '详情页',
+                    title: '主页',
                     index : '1',
 
                 }
             },
             {
-                path: '/index',
-                name: 'index',
-                component: () => import('../views/user/userList/userlist.vue'), //异步加载组件，需要时点开再加载该组件
+                path: '/mulu',
+                name: 'mulu',
+                component: () => import('../views/hanchuan/mulu/mulu.vue'), //异步加载组件，需要时点开再加载该组件
                 meta: {
-                    title: '首页图片',
-                    parentName:'首页管理',
-                    index: '2-1',
+                    title: '农产品目录',
+                    parentName:'',
+                    index: '2',
                 }
 
             },
-/*            {
-                path: '/com',
-                name: 'com',
-                component: () => import('../views/user/comlist/com.vue'), //异步加载组件，需要时点开再加载该组件
-                meta: {
-                    title: '首页案例',
-                    parentName:'首页管理',
-                    index: '2-2',
-                }
-
-            },*/
             {
-                path: '/case',
-                name: 'case',
-                component: () => import('../views/user/case/case.vue'), //异步加载组件，需要时点开再加载该组件
+                path: '/nongyao',
+                name: 'nongyao',
+                component: () => import('../views/hanchuan/guanli/nongyao.vue'), //异步加载组件，需要时点开再加载该组件
                 meta: {
-                    title: '首页案例',
-                    parentName:'首页管理',
-                    index: '2-2',
-                }
-            },
-            {
-                path: '/member',
-                name: 'member',
-                component: () => import('../views/user/member/member.vue'), //异步加载组件，需要时点开再加载该组件
-                meta: {
-                    title: '首页会员',
-                    parentName:'首页管理',
-                    index: '2-3',
-                }
-            },
-            {
-                path: '/article',
-                name: 'article',
-                component: () => import('../views/content/article.vue'), //异步加载组件，需要时点开再加载该组件
-                meta: {
-                    title: '文章列表',
-                    parentName:'内容管理',
+                    title: '农药管理',
+                    parentName:'农产品投入管理',
                     index: '3-1',
                 }
             },
             {
-                path: '/addarticle',
-                name: 'addarticle',
-                component: () => import('../views/content/addarticle.vue'), //异步加载组件，需要时点开再加载该组件
+                path: '/huafei',
+                name: 'huafei',
+                component: () => import('../views/hanchuan/guanli/huafei.vue'), //异步加载组件，需要时点开再加载该组件
                 meta: {
-                    title: '添加文章',
-                    parentName:'内容管理',
+                    title: '化肥管理',
+                    parentName:'农产品投入管理',
                     index: '3-2',
                 }
             },
             {
-                path: '/active',
-                name: 'active',
-                component: () => import('../views/user/active/active.vue'), //异步加载组件，需要时点开再加载该组件
+                path: '/zhongzi',
+                name: 'zhongzi',
+                component: () => import('../views/hanchuan/guanli/zhongzi.vue'), //异步加载组件，需要时点开再加载该组件
                 meta: {
-                    title: '线下活动',
-                    parentName:'内容管理',
+                    title: '种子管理',
+                    parentName:'农产品投入管理',
                     index: '3-3',
                 }
             },
             {
-                path: '/updatearticle/:id',
-                props: true,
-                name: 'updatearticle',
-                component: () => import('../views/content/addarticle.vue'), //异步加载组件，需要时点开再加载该组件
+                path: '/goods/add',
+                name: 'add',
+                component: () => import('../components/add/Add.vue'), //异步加载组件，需要时点开再加载该组件
                 meta: {
-                    title: '编辑文章',
-                    parentName:'内容管理',
+                    title: '农药添加',
+                    parentName:'农产品投入管理',
+                    index: '3-4',
+                }
+            },
+            {
+                path: '/dangan',
+                name: 'dangan',
+                component: () => import('../views/hanchuan/dangan/dangan.vue'), //异步加载组件，需要时点开再加载该组件
+                meta: {
+                    title: '田间档案',
+                    parentName:'',
+                    index: '4',
+                }
+            },
+            {
+                path: '/baogao',
+                name: 'baogao',
+                component: () => import('../views/hanchuan/baogao/baogao.vue'), //异步加载组件，需要时点开再加载该组件
+                meta: {
+                    title: '农产品检测报告',
+                    parentName:'',
+                    index: '5',
+                }
+            },
+            {
+                path: '/xiaoshou',
+                name: 'xiaoshou',
+                component: () => import('../views/hanchuan/xiaoshou/xiaoshou.vue'), //异步加载组件，需要时点开再加载该组件
+                meta: {
+                    title: '农产品销售',
+                    parentName:'',
+                    index: '6',
+                }
+            },
+            {
+                path: '/jbxx',
+                name: 'jbxx',
+                component: () => import('../views/hanchuan/xinxi/ztxx.vue'), //异步加载组件，需要时点开再加载该组件
+                meta: {
+                    title: '基本信息',
+                    parentName:'主体信息',
+                    index: '7-1',
+                }
+            },
+            {
+                path: '/ztjj',
+                name: 'ztjj',
+                component: () => import('../views/hanchuan/xinxi/ztjj.vue'), //异步加载组件，需要时点开再加载该组件
+                meta: {
+                    title: '主体简介',
+                    parentName:'主体信息',
+                    index: '7-2',
+                }
+            },
+            {
+                path: '/qyry',
+                name: 'qyry',
+                component: () => import('../views/hanchuan/xinxi/qyry.vue'), //异步加载组件，需要时点开再加载该组件
+                meta: {
+                    title: '企业人员',
+                    parentName:'主体信息',
+                    index: '7-3',
+                }
+            },
+            {
+                path: '/zhuisuma',
+                props: true,
+                name: 'zhuisuma',
+                component: () => import('../views/hanchuan/zhuisuma/zhuisuma.vue'), //异步加载组件，需要时点开再加载该组件
+                meta: {
+                    title: '追溯码生成',
+                    parentName:'',
+                    index: '8',
+                }
+            },
+            {
+                path: '/xgmm',
+                props: true,
+                name: 'xgmm',
+                component: () => import('../views/hanchuan/xitong/xgmm.vue'), //异步加载组件，需要时点开再加载该组件
+                meta: {
+                    title: '修改密码',
+                    parentName:'系统管理',
+                    index: '9-1',
+                }
+            },
+            {
+                path: '/czrz',
+                props: true,
+                name: 'czrz',
+                component: () => import('../views/hanchuan/xitong/czrz.vue'), //异步加载组件，需要时点开再加载该组件
+                meta: {
+                    title: '修改密码',
+                    parentName:'系统管理',
+                    index: '9-2',
+                }
+            },
+            {
+                path: '/cdgl',
+                props: true,
+                name: 'cdgl',
+                component: () => import('../views/hanchuan/xitong/cdgl.vue'), //异步加载组件，需要时点开再加载该组件
+                meta: {
+                    title: '菜单管理',
+                    parentName:'系统管理',
+                    index: '9-3',
+                }
+            },
+            {
+                path: '/jsgl',
+                props: true,
+                name: 'jsgl',
+                component: () => import('../views/hanchuan/xitong/jsgl.vue'), //异步加载组件，需要时点开再加载该组件
+                meta: {
+                    title: '角色管理',
+                    parentName:'系统管理',
+                    index: '9-4',
                 }
             },
         ]
+    },
+    {
+        path: '*',
+        name: '404',
+        component: () => import(/* webpackChunkName: "404" */ '../views/404.vue'),
     },
 ];
 
@@ -125,14 +214,22 @@ const  route = new VueRouter({
 
 route.beforeEach((to, from, next)=>{
     console.log(to.path);
-    document.title = to.meta.title+'- 昆山情缘';
+    document.title = to.meta.title+'- 汉川农产品';
     //判断当前路由是否需要登录
     if(!to.meta.anonymous){
         //做登录验证
-        if(sessionStorage.getItem('name')){
+        // 获取token
+        //使用login1组件就使用下列注释代码(token验证)
+        const tokenStr = window.sessionStorage.getItem('token')
+        if (!tokenStr) return next('/login')
+        //使用login组件就是用下列代码(登录名验证)
+/*        if(sessionStorage.getItem('name')){
             next();
         }else {
             next('/login')
+        }*/
+        else {
+            next()
         }
     }else {
         next();

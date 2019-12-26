@@ -11,33 +11,60 @@
                    class="el-menu-vertical-demo"
                    router
                    :collapse="isCollapse" >
-<!--               <el-menu-item index="1" route="/">
-                   <i class="el-icon-s-home"></i>
-                   <span slot="title">工作平台</span>
-               </el-menu-item>-->
-               <el-submenu index="2">
+               <el-menu-item index="2" route="/mulu">
+                       <i class="el-icon-document"></i>
+                       <span slot="title" >农产品目录</span>
+               </el-menu-item>
+               <el-submenu index="3" >
                    <template slot="title">
-                       <i class="el-icon-location"></i>
-                       <span slot="title">首页管理</span>
+                       <i class="el-icon-edit"></i>
+                       <span slot="title">农业投入品管理</span>
                    </template>
                    <el-menu-item-group >
-                       <el-menu-item index="2-1" route="/index" id="item">首页图片</el-menu-item>
-                       <el-menu-item index="2-2" route="/case" id="item1">案例图片</el-menu-item>
-                       <el-menu-item index="2-3" route="/member" id="item4">会员图片</el-menu-item>
+                       <el-menu-item index="3-1" route="/nongyao" id="item3-1">农药管理</el-menu-item>
+                       <el-menu-item index="3-2" route="/huafei" id="item3-2">化肥管理</el-menu-item>
+                       <el-menu-item index="3-3" route="/zhongzi" id="item3-3">种子管理</el-menu-item>
                    </el-menu-item-group>
                </el-submenu>
-               <el-submenu index="3">
+               <el-menu-item index="4" route="/dangan">
+                       <i class="el-icon-tickets"></i>
+                       <span slot="title">田间档案</span>
+               </el-menu-item>
+               <el-menu-item index="5" route="/baogao">
+                       <i class="el-icon-printer"></i>
+                       <span slot="title">农产品检测报告</span>
+               </el-menu-item>
+               <el-menu-item index="6" route="/xiaoshou">
+                       <i class="el-icon-goods"></i>
+                       <span slot="title">农产品销售</span>
+               </el-menu-item>
+               <el-submenu index="7" >
                    <template slot="title">
-                       <i class="el-icon-location"></i>
-                       <span slot="title">内容管理</span>
+                       <i class="el-icon-edit"></i>
+                       <span slot="title">主题信息</span>
                    </template>
                    <el-menu-item-group >
-                       <!--<el-menu-item index="3-3" route="/active" id="item5">动态管理</el-menu-item>-->
-                       <el-menu-item index="3-1" route="/article" id="item2">动态管理</el-menu-item>
-                       <el-menu-item index="3-2" route="/active" id="item13">线下活动</el-menu-item>
+                       <el-menu-item index="7-1" route="/jbxx" id="item7-1">基本信息</el-menu-item>
+                       <el-menu-item index="7-2" route="/ztjj" id="item7-2">主体简介</el-menu-item>
+                       <el-menu-item index="7-3" route="/qyry" id="item7-3">企业人员</el-menu-item>
                    </el-menu-item-group>
                </el-submenu>
-
+               <el-menu-item index="8" route="/zhuisuma">
+                       <i class="el-icon-picture"></i>
+                       <span slot="title">追溯码生成</span>
+               </el-menu-item>
+               <el-submenu index="9" >
+                   <template slot="title">
+                       <i class="el-icon-edit"></i>
+                       <span slot="title">系统管理</span>
+                   </template>
+                   <el-menu-item-group >
+                       <el-menu-item index="9-1" route="/xgmm" id="item9-1">修改密码</el-menu-item>
+                       <el-menu-item index="9-2" route="/czrz" id="item9-2">操作日志</el-menu-item>
+                       <el-menu-item index="9-3" route="/cdgl" id="item9-3">菜单管理</el-menu-item>
+                       <el-menu-item index="9-4" route="/jsgl" id="item9-4">角色管理</el-menu-item>
+                   </el-menu-item-group>
+               </el-submenu>
            </el-menu>
            <i class=" arrow" :class="isCollapse ? 'el-icon-d-arrow-right' : 'el-icon-d-arrow-left'" @click="isCollapse=!isCollapse"></i>
        </div>

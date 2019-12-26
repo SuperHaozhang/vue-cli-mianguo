@@ -3,7 +3,7 @@ import axios from 'axios'
 import store from '../store/index.js'    //引用store.js
 
 var instance = axios.create({
-   baseURL:'http://localhost:8085'
+   baseURL:'http://192.168.0.111:8989/v1'
 });
 
 // 添加请求拦截器

@@ -1,12 +1,10 @@
 <template>
-    <h1>
-        页面走丢了，请返回登录！！！
-    </h1>
+    <div>追溯码生成</div>
 </template>
 
 <script>
     export default {
-        name: "404"
+        name: "zhuisuma"
     }
 </script>
 

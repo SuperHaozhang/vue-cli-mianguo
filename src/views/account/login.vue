@@ -1,4 +1,4 @@
-<template>
+<template xmlns="">
     <div class="container" >
         <div class="content">
             <el-card class="box-card" shadow="hover" v-loading="loginLoding">
@@ -14,10 +14,10 @@
                         </el-alert>
                     </el-form-item>
                     <el-form-item prop="name">
-                        <el-input prefix-icon="el-icon-s-custom" v-model.trim="form.name" placeholder="账户"></el-input>
+                        <el-input prefix-icon="el-icon-s-custom" v-model.trim="form.loginName" placeholder="账户"></el-input>
                     </el-form-item>
                     <el-form-item prop="pwd">
-                        <el-input prefix-icon="el-icon-unlock" type="password" v-model.trim="form.pwd"  placeholder="密码" @keyup.enter.native="onSubmit"></el-input>
+                        <el-input prefix-icon="el-icon-unlock" type="password" v-model.trim="form.password"  placeholder="密码" @keyup.enter.native="onSubmit"></el-input>
                     </el-form-item>
                     <el-form-item >
                         <el-button style="width: 100%"
@@ -37,8 +37,8 @@
                 return {
                     loginLoding: false,
                     form: {
-                        name: '',
-                        pwd: '',
+                        loginName: '',
+                        password: '',
                     },
                     styleobj:{
                         'display':'none',
@@ -46,10 +46,10 @@
                     title:'',
                     mess:'',
                     rules:{
-                        name:[
+                        loginName:[
                             {required:true,message:'请输入账号',trigger:'blur'},
                         ],
-                        pwd:[
+                        password:[
                             {required:true,message:'请输入密码',trigger:'blur'},
                         ]
                     }
@@ -58,11 +58,11 @@
         methods:{
             onSubmit(){
                 this.loginLoding = true;
-                if(!this.form.name || !this.form.pwd){
+                if(!this.form.loginName || !this.form.password){
                     this.loginLoding = false;
                     return this.$warn('用户名和密码不能为空');
                 }
-                var _this = this;
+/*                var _this = this;
                 var captcha1 = new TencentCaptcha('2005857848', function(res) {
                     if(res.ret == 0){
                         _this.login()
@@ -70,8 +70,8 @@
                         return;
                     }
                 });
-                captcha1.show();
-
+                captcha1.show();*/
+                this.login();
             },
             rest() {
                 this.styleobj={
@@ -79,14 +79,12 @@
                 }
             },
             login(){
-                this.$http({
-                    method: 'post',
-                    url: '/adminlogin',
-                    data: this.$qs.stringify(this.form)
+                this.$http.post('/sysuser/token', {
+                    loginName: this.form.loginName,
+                    password: this.form.password
                 }).then(res=>{
-                    console.log(res.data.code);
-                    console.log(res.data.message);
-                    if(res.data.code==200){
+                    console.log(res);
+                    if(res.data.code === 0){
                         this.mess = 'success';
                         this.title = "登录成功";
                         this.loginLoding = false;
@@ -95,13 +93,19 @@
                             'width': '165px',
                             'margin-left': '150px',
                         };
-                        sessionStorage.setItem('name',res.data.name);
-                        this.$store.commit("LOGIN", res.data.message);
+                        sessionStorage.setItem('token',JSON.stringify(res.data.data.token.access_token));
+                        sessionStorage.setItem('loginName',res.data.data.user.loginName);
+                        sessionStorage.setItem('password',res.data.data.user.password);
+                        sessionStorage.setItem('name',res.data.data.user.name);
+                        sessionStorage.setItem('id',res.data.data.user.id);
+                        sessionStorage.setItem('avatar',res.data.data.user.avatar);
+                        sessionStorage.setItem('menuIds',res.data.data.param);
+                        this.$store.commit("settoken", JSON.stringify(res.data.data.token.access_token));
                         setTimeout(()=>{
                             this.$go('/');
                         },1000);
                     }
-                    if(res.data.code!==200){
+                    if(res.data.code!==0){
                         this.loginLoding = false;
                         this.mess = 'error';
                         this.title = res.data.message;

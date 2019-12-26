@@ -1,21 +1,27 @@
 <template>
     <div id="app">
-        <myheader></myheader>
-        <section style="display: flex;flex: 1;">
-            <left style="background-color: #545c64;"
-                  @collapse="leftcollapse"
-            ></left>
-            <article :style="{width:'calc(100vw - '+ leftW +'px)'}"
-                     style="flex: 1;padding: 10px;box-sizing: border-box" >
-                <bread></bread>
-                <router-view/>
-            </article>
-        </section>
+        <el-container>
+            <el-header>
+                <myheader></myheader>
+            </el-header>
+            <el-container>
+                    <left style="background-color: #545c64;"
+                          @collapse="leftcollapse"
+                    ></left>
+                <el-container>
+                    <el-main>
+                        <bread></bread>
+                        <router-view/>
+                    </el-main>
+                    <el-footer><myfooter></myfooter></el-footer>
+                </el-container>
+            </el-container>
+        </el-container>
     </div>
 </template>
 
 <script>
-    import {myheader,left,bread} from '@/components'
+    import {myheader,left,bread,myfooter} from '@/components'
     export default {
         data() {
             return {
@@ -38,6 +44,7 @@
             myheader,
             left,
             bread,
+            myfooter,
         },
 
 
@@ -45,6 +52,8 @@
 </script>
 
 <style>
-
+    .el-header{
+        padding: 0;
+    }
 
 </style>

@@ -19,11 +19,12 @@ export default new Vuex.Store({
       setnickName(state,val){
           state.nickname = val
       },
-      LOGIN: (state, data) => {
+    settoken: (state, data) => {
           //更改token的值
           state.token = data;
-          // console.log(data)
+          console.log(data);
           window.sessionStorage.setItem('token', data);
+          console.log(window.sessionStorage.getItem('token')+"111")
       },
   },
   actions: {

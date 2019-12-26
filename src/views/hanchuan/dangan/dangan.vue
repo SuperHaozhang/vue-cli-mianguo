@@ -1,12 +1,10 @@
 <template>
-    <h1>
-        页面走丢了，请返回登录！！！
-    </h1>
+    <div>田间档案</div>
 </template>
 
 <script>
     export default {
-        name: "404"
+        name: "dangan"
     }
 </script>
 
