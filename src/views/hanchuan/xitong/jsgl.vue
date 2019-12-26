@@ -332,7 +332,7 @@
                   num1++;
                 }
               });
-       /*       //this.data2 = res.data.data;
+              //this.data2 = res.data.data;
               //console.log(this.data2);
               this.data1 = res.data.data.slice(0);
               res.data.data.forEach((item,index)=>{
@@ -349,7 +349,7 @@
               });
               console.log(res.data.data);
               this.data2 = this.data1.slice(0);
-              num1=0;*/
+              num1=0;
             });
           }
           
